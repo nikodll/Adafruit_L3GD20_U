@@ -20,7 +20,7 @@
 #if (ARDUINO >= 100)
  #include "Arduino.h"
 #else
- #include "WProgram.h"
+ #include "application.h"
 #endif
 
 #include <Adafruit_Sensor.h>
