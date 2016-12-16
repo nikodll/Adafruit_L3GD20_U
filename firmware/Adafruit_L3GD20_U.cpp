@@ -36,7 +36,7 @@
 void Adafruit_L3GD20_Unified::write8(byte reg, byte value)
 {
   Wire.beginTransmission(L3GD20_ADDRESS);
-  #if ARDUINO >= 100
+  #if (ARDUINO >= 100 || defined(SPARK))
     Wire.write((uint8_t)reg);
     Wire.write((uint8_t)value);
   #else
@@ -56,7 +56,7 @@ byte Adafruit_L3GD20_Unified::read8(byte reg)
   byte value;
 
   Wire.beginTransmission((byte)L3GD20_ADDRESS);
-  #if ARDUINO >= 100
+  #if (ARDUINO >= 100 || defined(SPARK))
     Wire.write((uint8_t)reg);
   #else
     Wire.send(reg);
@@ -64,7 +64,7 @@ byte Adafruit_L3GD20_Unified::read8(byte reg)
   Wire.endTransmission();
   Wire.requestFrom((byte)L3GD20_ADDRESS, (byte)1);
   while (!Wire.available()); // Wait for data to arrive.
-  #if ARDUINO >= 100
+  #if (ARDUINO >= 100 || defined(SPARK))
     value = Wire.read();
   #else
     value = Wire.receive();
@@ -242,7 +242,7 @@ bool Adafruit_L3GD20_Unified::getEvent(sensors_event_t* event)
 
     /* Read 6 bytes from the sensor */
     Wire.beginTransmission((byte)L3GD20_ADDRESS);
-    #if ARDUINO >= 100
+    #if (ARDUINO >= 100 || defined(SPARK))
       Wire.write(GYRO_REGISTER_OUT_X_L | 0x80);
     #else
       Wire.send(GYRO_REGISTER_OUT_X_L | 0x80);
@@ -253,7 +253,7 @@ bool Adafruit_L3GD20_Unified::getEvent(sensors_event_t* event)
     }
     Wire.requestFrom((byte)L3GD20_ADDRESS, (byte)6);
 
-    #if ARDUINO >= 100
+    #if (ARDUINO >= 100 || defined(SPARK))
       uint8_t xlo = Wire.read();
       uint8_t xhi = Wire.read();
       uint8_t ylo = Wire.read();
