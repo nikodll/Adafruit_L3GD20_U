@@ -24,7 +24,7 @@
  #include "Arduino.h"
  #include "Print.h"
 #else
- #include "WProgram.h"
+ #include "Particle.h"
 #endif
 
 /* Intentionally modeled after sensors.h in the Android API:

@@ -17,7 +17,7 @@
 #if ARDUINO >= 100
  #include "Arduino.h"
 #else
- #include "application.h"
+ #include "Particle.h"
 #endif
 
 #include <limits.h>
