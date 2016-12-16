@@ -20,7 +20,6 @@
  #include "application.h"
 #endif
 
-#include <Wire.h>
 #include <limits.h>
 
 #include "Adafruit_L3GD20_U.h"
